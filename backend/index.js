@@ -2,15 +2,10 @@ import express from "express";
 import DB from "./DB/connection.js";
 import Authentication from "./Middleware/userAuthentication.js";
 import cors from "cors";
-import path from "path";
 
 import projectRouter from "./Routes/ProjectRoutes.js";
 import userRouter from "./Routes/UsersRoutes.js";
 import helmet from "helmet";
-
-import { fileURLToPath } from "url";
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
 
 const API = process.env.VITE_API_ENDPOINT;
 
@@ -18,7 +13,7 @@ const app = express();
 
 app.use(cors());
 app.use(express.json());
-app.use(express.static(path.join(__dirname, "../dist/")));
+
 app.use(
 	helmet({
 		contentSecurityPolicy: {
@@ -34,7 +29,7 @@ app.use(
 );
 
 app.get("/", (req, res) => {
-	res.sendFile(path.join(__dirname, "../dist/index.html"));
+	res.json("Hello World");
 });
 
 // Routes
