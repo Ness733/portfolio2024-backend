@@ -33,7 +33,11 @@ export default async function Authentication(req, res) {
 		process.env.SECRET_KEY
 	);
 
-	res.cookie("jwt", token, { httpOnly: true, secure: true });
+	res.cookie("jwt", token, {
+		httpOnly: true,
+		secure: true,
+		sameSite: "none",
+	});
 
 	res.status(200).json({
 		message: "User authenticated",
