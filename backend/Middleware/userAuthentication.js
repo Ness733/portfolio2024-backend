@@ -36,7 +36,7 @@ export default async function Authentication(req, res) {
 	res.cookie("jwt", token, {
 		httpOnly: true,
 		secure: true,
-		sameSite: "none",
+		sameSite: "Strict",
 	});
 
 	res.status(200).json({
