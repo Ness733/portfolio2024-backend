@@ -7,7 +7,8 @@ import projectRouter from "./Routes/ProjectRoutes.js";
 import userRouter from "./Routes/UsersRoutes.js";
 import helmet from "helmet";
 
-const API = process.env.VITE_API_ENDPOINT;
+const port = process.env.PORT;
+const host = process.env.HOST;
 
 const app = express();
 
@@ -16,7 +17,8 @@ app.use(express.json());
 app.use((req, res, next) => {
 	res.header(
 		"Access-Control-Allow-Origin",
-		"https://rosalesnestor-dev.vercel.app"
+		"https://rosalesnestor-dev.vercel.app",
+		"http://192.168.1.101:3000/"
 	);
 	res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
 	res.header("Access-Control-Allow-Headers", "Content-Type, Authorization");
@@ -57,6 +59,6 @@ try {
 	console.log("Algo salió mal", error);
 }
 
-app.listen(3000, () => {
-	console.log(`Servidor escuchando en ${API}`);
+app.listen(port, () => {
+	console.log(`Servidor escuchando en http://${host}:${port}`);
 });
