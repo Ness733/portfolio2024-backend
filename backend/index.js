@@ -17,6 +17,8 @@ app.use(express.json());
 app.use((req, res, next) => {
 	res.header(
 		"Access-Control-Allow-Origin",
+		"https://nrdev.online",
+		"http://localhost:3000",
 		"https://rosalesnestor-dev.vercel.app",
 		"http://192.168.1.101:3000/"
 	);
